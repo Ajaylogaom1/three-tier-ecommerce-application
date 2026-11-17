@@ -1,0 +1,179 @@
+
+{% extends "base.html" %}
+
+{% block title %}Checkout - Shree Sai{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2 class="fw-bold text-center mb-5">Checkout</h2>
+
+    <div class="row g-4">
+
+        <!-- Product Information -->
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                {% if product.image_filename %}
+                    <img
+                        src="{{ url_for('static', filename='images/' + product.image_filename) }}"
+                        class="card-img-top"
+                        style="height:300px; object-fit:contain; background:#f1f3f5;"
+                        alt="{{ product.name }}"
+                    >
+                {% else %}
+                    <div class="product-placeholder" style="height:300px;">
+                        No Image Available
+                    </div>
+                {% endif %}
+
+                <div class="card-body">
+
+                    <span class="badge bg-info text-dark mb-2">
+                        {{ product.category }}
+                    </span>
+
+                    <h3 class="fw-bold">{{ product.name }}</h3>
+
+                    <p class="text-muted">
+                        {{ product.description }}
+                    </p>
+
+                    <h4 class="text-primary fw-bold">
+                        ₹{{ "%.2f"|format(product.price) }}
+                    </h4>
+
+                    <p class="text-success">
+                        Available Stock: {{ product.stock }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Checkout Form -->
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm border-0 p-4">
+
+                <h4 class="fw-bold mb-4">Customer Details</h4>
+
+                <form method="POST">
+
+                    <input type="hidden" name="csrf_token"
+                           value="{{ csrf_token() }}">
+
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input
+                            type="text"
+                            name="customer_name"
+                            class="form-control"
+                            value="{{ current_user.name }}"
+                            required
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input
+                            type="tel"
+                            name="phone"
+                            class="form-control"
+                            value="{{ current_user.phone or '' }}"
+                            required
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Delivery Address</label>
+                        <textarea
+                            name="address"
+                            class="form-control"
+                            rows="3"
+                            placeholder="Enter your complete delivery address"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+
+                        <input
+                            type="number"
+                            name="quantity"
+                            id="quantity"
+                            class="form-control"
+                            value="1"
+                            min="1"
+                            max="{{ product.stock }}"
+                            required
+                        >
+                    </div>
+
+                    <hr>
+
+                    <!-- Order Summary -->
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Product Price</span>
+                        <span>₹{{ "%.2f"|format(product.price) }}</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Quantity</span>
+                        <span id="summary-quantity">1</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-4">
+                        <h5 class="fw-bold">Total Amount</h5>
+
+                        <h5 class="text-primary fw-bold">
+                            ₹<span id="total-price">
+                                {{ "%.2f"|format(product.price) }}
+                            </span>
+                        </h5>
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-primary w-100 btn-lg">
+                        Place Order
+                    </button>
+
+                    <a href="{{ url_for('products') }}"
+                       class="btn btn-outline-secondary w-100 mt-2">
+                        Continue Shopping
+                    </a>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const quantityInput = document.getElementById('quantity');
+    const totalPrice = document.getElementById('total-price');
+    const summaryQuantity = document.getElementById('summary-quantity');
+
+    const price = Number("{{ product.price }}");
+
+    quantityInput.addEventListener('input', function () {
+
+        let quantity = parseInt(this.value) || 0;
+
+        summaryQuantity.textContent = quantity;
+
+        totalPrice.textContent = (price * quantity).toFixed(2);
+
+    });
+</script>
+
+{% endblock %}

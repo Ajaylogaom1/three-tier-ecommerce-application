@@ -1,0 +1,157 @@
+
+{% extends "base.html" %}
+
+{% block title %}About Our Business | Shree Sai{% endblock %}
+
+{% block content %}
+
+<!-- About Hero Section -->
+<section class="about-hero text-center py-5">
+
+    <div class="container">
+
+        <h1 class="fw-bold">About Shree Sai</h1>
+
+        <p class="lead mt-3">
+            Your destination for submersible pumps, motor winding
+            and reliable repair services.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- About Business -->
+<div class="container py-5">
+
+    <div class="row align-items-center g-4">
+
+        <div class="col-md-6">
+
+            <h2 class="fw-bold mb-3">Who We Are</h2>
+
+            <p>
+                Shree Sai provides products and services related to
+                submersible pumps, electric motors and repair solutions.
+            </p>
+
+            <p>
+                We aim to help customers find suitable pump products,
+                access repair services and request maintenance support
+                through one convenient platform.
+            </p>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="about-highlight">
+
+                <h3>SHREE SAI</h3>
+
+                <p>
+                    Pumps | Motors | Spare Parts | Repair Services
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Business Categories -->
+    <div class="text-center mt-5 mb-4">
+
+        <h2 class="fw-bold">What We Offer</h2>
+
+        <p class="text-muted">
+            Products and services available through Shree Sai.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="about-card">
+
+                <i class="bi bi-droplet-fill"></i>
+
+                <h4>Submersible Pumps</h4>
+
+                <p>
+                    Explore our collection of water pumps and
+                    related equipment.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="about-card">
+
+                <i class="bi bi-gear-fill"></i>
+
+                <h4>Motor Winding</h4>
+
+                <p>
+                    Motor winding, rewinding and repair services
+                    for customers.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="about-card">
+
+                <i class="bi bi-tools"></i>
+
+                <h4>Repair & Maintenance</h4>
+
+                <p>
+                    Pump repair, motor repair and maintenance
+                    service requests.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Call to Action -->
+    <div class="text-center mt-5">
+
+        <h3>Need Our Products or Services?</h3>
+
+        <p class="text-muted">
+            Explore our products and available services.
+        </p>
+
+        <a href="{{ url_for('products') }}"
+           class="btn btn-primary me-2">
+            Explore Products
+        </a>
+
+        <a href="{{ url_for('services') }}"
+           class="btn btn-outline-primary">
+            Our Services
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

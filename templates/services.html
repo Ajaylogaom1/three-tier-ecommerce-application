@@ -1,0 +1,136 @@
+
+{% extends "base.html" %}
+
+{% block title %}Our Services | Shree Sai{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- Heading -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Our Services</h1>
+
+        <p class="text-muted">
+            Reliable motor repair, winding and pump maintenance services.
+        </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="row g-4">
+
+        <!-- Motor Rewinding -->
+        <div class="col-lg-3 col-md-6">
+            <div class="service-item">
+
+                <div class="service-icon">⚡</div>
+
+                <h4>Motor Rewinding</h4>
+
+                <p>
+                    Professional motor winding and rewinding
+                    services to restore motor performance.
+                </p>
+
+                <a href="{{ url_for('book_service') }}"
+                   class="btn btn-outline-primary">
+                    Book Service
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Motor Repair -->
+        <div class="col-lg-3 col-md-6">
+            <div class="service-item">
+
+                <div class="service-icon">🔧</div>
+
+                <h4>Motor Repair</h4>
+
+                <p>
+                    Repair and troubleshooting of electric
+                    motors for reliable operation.
+                </p>
+
+                <a href="{{ url_for('book_service') }}"
+                   class="btn btn-outline-primary">
+                    Book Service
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Pump Repair -->
+        <div class="col-lg-3 col-md-6">
+            <div class="service-item">
+
+                <div class="service-icon">💧</div>
+
+                <h4>Pump Repair</h4>
+
+                <p>
+                    Inspection, servicing and repair of
+                    water pumps and related equipment.
+                </p>
+
+                <a href="{{ url_for('book_service') }}"
+                   class="btn btn-outline-primary">
+                    Book Service
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Maintenance -->
+        <div class="col-lg-3 col-md-6">
+            <div class="service-item">
+
+                <div class="service-icon">⚙️</div>
+
+                <h4>Maintenance</h4>
+
+                <p>
+                    Preventive maintenance to improve
+                    equipment performance and reliability.
+                </p>
+
+                <a href="{{ url_for('book_service') }}"
+                   class="btn btn-outline-primary">
+                    Book Service
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Contact Section -->
+    <div class="text-center mt-5 p-4 service-contact">
+
+        <h3>Need Professional Assistance?</h3>
+
+        <p>
+            Book a service request with Shree Sai today.
+        </p>
+
+        <a href="{{ url_for('book_service') }}"
+           class="btn btn-primary">
+            Book a Service Now
+        </a>
+
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center mt-4">
+
+        <a href="{{ url_for('dashboard') }}"
+           class="btn btn-outline-secondary">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

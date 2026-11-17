@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}My Account | Shree Sai{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- Welcome Section -->
+    <div class="text-center">
+        <h1>Welcome to Shree Sai!</h1>
+
+        <p>Hello, {{ current_user.name }}.</p>
+
+        <p>Your account is successfully logged in.</p>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="row g-4 mt-4">
+
+        <!-- Products Card -->
+        <div class="col-md-4">
+
+            <a href="{{ url_for('products') }}" class="service-card dashboard-link">
+
+                <h4>Our Products</h4>
+
+                <p>Explore pumps, pipes and spare parts.</p>
+
+            </a>
+
+        </div>
+
+
+        <!-- Services Card -->
+        <div class="col-md-4">
+
+            <a href="{{ url_for('services') }}" class="service-card dashboard-link">
+
+                <h4>Our Services</h4>
+
+                <p>Explore our repair and winding services.</p>
+
+            </a>
+
+        </div>
+
+
+        <!-- Book a Service Card -->
+        <div class="col-md-4">
+
+            <a href="{{ url_for('book_service') }}" class="service-card dashboard-link">
+
+                <h4>Book a Service</h4>
+
+                <p>Request motor repair and maintenance.</p>
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

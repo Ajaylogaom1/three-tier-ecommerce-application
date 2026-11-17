@@ -1,0 +1,340 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    margin-bottom: 0 !important;
+    border-bottom: none;
+}
+
+.hero {
+    margin-top: 0 !important;
+    padding-top: 120px;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #021426;
+    padding: 18px;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.navbar-brand {
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+/* Homepage banner */
+.hero {
+    background: linear-gradient(120deg, #082d50, #0879b9);
+    color: white;
+    padding: 110px 20px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    font-weight: bold;
+}
+
+.hero h2 {
+    font-size: 30px;
+    margin: 20px 0;
+}
+
+.hero p {
+    font-size: 18px;
+    margin: 25px 0;
+}
+
+/* Service cards */
+.service-card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: center;
+    height: 100%;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.service-card h4 {
+    color: #0879b9;
+    margin-bottom: 15px;
+}
+
+/* Footer */
+.footer {
+    background-color: #082d50;
+    color: white;
+    padding: 35px;
+}
+
+
+/* Authentication pages */
+
+.auth-container {
+    max-width: 450px;
+    margin: 60px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.auth-container h2 {
+    text-align: center;
+    color: #082d50;
+    font-weight: bold;
+}
+
+.auth-container p {
+    text-align: center;
+    color: #666;
+}
+
+.auth-container .form-control {
+    padding: 12px;
+}
+
+.auth-container .btn-primary {
+    background-color: #0879b9;
+    border: none;
+    padding: 12px;
+}
+
+.auth-container .btn-primary:hover {
+    background-color: #082d50;
+}
+
+
+/* Products Page */
+
+.product-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.14);
+}
+
+.product-image {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+    padding: 15px;
+    background: #f8f9fa;
+}
+
+.product-placeholder {
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9ecef;
+    color: #6c757d;
+}
+
+.product-card .card-body {
+    padding: 22px;
+}
+
+.product-card .card-title {
+    font-weight: 600;
+    color: #08243e;
+}
+
+.product-card .card-text {
+    line-height: 1.6;
+}
+
+.empty-products {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Dashboard clickable card */
+
+.dashboard-link {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.dashboard-link:hover {
+    color: inherit;
+    transform: translateY(-5px);
+    transition: 0.3s ease;
+}
+
+.dashboard-link h4 {
+    color: #0783c5;
+}
+
+
+/* Services Page */
+
+.service-item {
+    background: #ffffff;
+    padding: 25px 18px;
+    border-radius: 15px;
+    text-align: center;
+    height: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.13);
+}
+
+.service-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.service-item h4 {
+    color: #087fc1;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.service-item p {
+    color: #555;
+    min-height: 85px;
+    line-height: 1.6;
+}
+
+.service-contact {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Service Booking Form */
+
+.booking-container {
+    max-width: 700px;
+    margin: auto;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.booking-container h1 {
+    color: #08243e;
+}
+
+.booking-container .form-label {
+    font-weight: 600;
+    color: #263746;
+}
+
+.booking-container .form-control,
+.booking-container .form-select {
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.booking-container .form-control:focus,
+.booking-container .form-select:focus {
+    border-color: #0783c5;
+    box-shadow: 0 0 0 0.2rem rgba(7, 131, 197, 0.15);
+}
+
+.booking-container button {
+    padding: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+@media (max-width: 576px) {
+    .booking-container {
+        padding: 20px;
+    }
+}
+
+
+/* About Business Page */
+
+.about-hero {
+    background: linear-gradient(135deg, #08243e, #087fc1);
+    color: white;
+}
+
+.about-hero h1 {
+    font-size: 42px;
+}
+
+.about-hero p {
+    max-width: 700px;
+    margin: auto;
+}
+
+.about-highlight {
+    background: #f0f7fc;
+    padding: 65px 25px;
+    border-radius: 15px;
+    text-align: center;
+    color: #087fc1;
+}
+
+.about-highlight h3 {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.about-card {
+    background: white;
+    padding: 30px 20px;
+    text-align: center;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    transition: 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-6px);
+}
+
+.about-card i {
+    font-size: 40px;
+    color: #087fc1;
+    margin-bottom: 15px;
+}
+
+.about-card h4 {
+    color: #08243e;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+

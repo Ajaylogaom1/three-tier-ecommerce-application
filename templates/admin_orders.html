@@ -1,0 +1,247 @@
+
+{% extends "base.html" %}
+
+{% block title %}Manage Orders - Shree Sai{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-5 px-lg-5">
+
+    <!-- Page Heading -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold">Order Management</h2>
+            <p class="text-muted">
+                Manage and track customer orders.
+            </p>
+        </div>
+
+        <a href="{{ url_for('dashboard') }}"
+           class="btn btn-outline-primary">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+    <!-- Dashboard Statistics -->
+    <div class="row g-3 mb-5">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3">
+                <p class="text-muted mb-1">Total Orders</p>
+                <h3 class="fw-bold">{{ total_orders }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3">
+                <p class="text-muted mb-1">Pending Orders</p>
+                <h3 class="fw-bold text-warning">
+                    {{ pending_orders }}
+                </h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3">
+                <p class="text-muted mb-1">Confirmed Orders</p>
+                <h3 class="fw-bold text-success">
+                    {{ confirmed_orders }}
+                </h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3">
+                <p class="text-muted mb-1">Delivered Orders</p>
+                <h3 class="fw-bold text-primary">
+                    {{ delivered_orders }}
+                </h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Orders Table -->
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+            <h5 class="fw-bold mb-4">All Customer Orders</h5>
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-light">
+
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Phone</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Delivery Address</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for order, product in orders %}
+
+                        <tr>
+
+                            <td class="fw-bold">
+                                #{{ order.id }}
+                            </td>
+
+                            <td>
+                                {{ order.customer_name }}
+                            </td>
+
+                            <td>
+                                {{ product.name }}
+                            </td>
+
+                            <td>
+                                {{ order.phone }}
+                            </td>
+
+                            <td>
+                                {{ order.quantity }}
+                            </td>
+
+                            <td class="fw-bold text-primary">
+                                ₹{{ "%.2f"|format(order.total_amount) }}
+                            </td>
+
+                            <td style="min-width:180px;">
+                                {{ order.address }}
+                            </td>
+
+                            <td>
+                                {{ order.created_at.strftime('%d-%m-%Y') if order.created_at else 'N/A' }}
+                            </td>
+
+                            <td>
+
+                                {% if order.status == 'Pending' %}
+
+                                    <span class="badge bg-warning text-dark">
+                                        Pending
+                                    </span>
+
+                                {% elif order.status == 'Confirmed' %}
+
+                                    <span class="badge bg-success">
+                                        Confirmed
+                                    </span>
+
+                                {% elif order.status == 'Shipped' %}
+
+                                    <span class="badge bg-info text-dark">
+                                        Shipped
+                                    </span>
+
+                                {% elif order.status == 'Delivered' %}
+
+                                    <span class="badge bg-primary">
+                                        Delivered
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="badge bg-danger">
+                                        Cancelled
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+                            <td style="min-width:180px;">
+
+                                <form method="POST"
+                                      action="{{ url_for('update_order_status', order_id=order.id) }}">
+
+                                    <input type="hidden"
+                                           name="csrf_token"
+                                           value="{{ csrf_token() }}">
+
+                                    <select name="status"
+                                            class="form-select form-select-sm mb-2">
+
+                                        <option value="Pending"
+                                            {% if order.status == 'Pending' %}selected{% endif %}>
+                                            Pending
+                                        </option>
+
+                                        <option value="Confirmed"
+                                            {% if order.status == 'Confirmed' %}selected{% endif %}>
+                                            Confirmed
+                                        </option>
+
+                                        <option value="Shipped"
+                                            {% if order.status == 'Shipped' %}selected{% endif %}>
+                                            Shipped
+                                        </option>
+
+                                        <option value="Delivered"
+                                            {% if order.status == 'Delivered' %}selected{% endif %}>
+                                            Delivered
+                                        </option>
+
+                                        <option value="Cancelled"
+                                            {% if order.status == 'Cancelled' %}selected{% endif %}>
+                                            Cancelled
+                                        </option>
+
+                                    </select>
+
+                                    <button type="submit"
+                                            class="btn btn-sm btn-primary w-100">
+                                        Update Status
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+                        </tr>
+
+                        {% else %}
+
+                        <tr>
+                            <td colspan="10"
+                                class="text-center py-5 text-muted">
+
+                                <h5>No Orders Found</h5>
+
+                                <p>
+                                    Customer orders will appear here.
+                                </p>
+
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

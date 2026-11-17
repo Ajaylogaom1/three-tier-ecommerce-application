@@ -1,0 +1,81 @@
+
+{% extends "base.html" %}
+
+{% block title %}Home | Shree Sai{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container text-center">
+
+        <h1>SHREE SAI</h1>
+
+        <h2>Submersible Pumps & Repair Services</h2>
+
+        <p>
+            Your trusted destination for submersible pumps,
+            motor winding, repairs, spare parts and pipes.
+        </p>
+
+        {% if not current_user.is_authenticated %}
+
+            <a href="{{ url_for('signup') }}"
+               class="btn btn-warning btn-lg">
+                Create Your Account
+            </a>
+
+        {% endif %}
+
+    </div>
+</section>
+
+
+<!-- About Our Business -->
+<section class="container text-center py-5">
+
+    <h2>About Our Business</h2>
+
+    <p>
+        We provide quality submersible pumps,
+        motor winding, repairs, spare parts and pipe accessories.
+        Our goal is to provide reliable products and trusted services
+        to every customer.
+    </p>
+
+</section>
+
+
+<!-- Our Services -->
+<section class="container pb-5">
+
+    <h2 class="text-center mb-4">Our Services</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="service-card">
+                <h4>Submersible Pumps</h4>
+                <p>Quality motors and pump accessories.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="service-card">
+                <h4>Motor Winding</h4>
+                <p>Motor winding and repair services.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="service-card">
+                <h4>Pipes & Spare Parts</h4>
+                <p>Pipes, fittings and spare parts.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

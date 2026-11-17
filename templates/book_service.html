@@ -1,0 +1,199 @@
+
+{% extends "base.html" %}
+
+{% block title %}Book a Service | Shree Sai{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="booking-container">
+
+        <div class="text-center mb-4">
+
+            <h1 class="fw-bold">Book a Service</h1>
+
+            <p class="text-muted">
+                Tell us about your motor or pump problem.
+                Our team will assist you.
+            </p>
+
+        </div>
+
+        <form method="POST" action="{{ url_for('book_service') }}">
+
+            <!-- CSRF Protection -->
+            <input type="hidden" name="csrf_token"
+                   value="{{ csrf_token() }}">
+
+            <!-- Customer Name -->
+            <div class="mb-3">
+
+                <label class="form-label">Customer Name</label>
+
+                <input
+                    type="text"
+                    name="customer_name"
+                    class="form-control"
+                    value="{{ current_user.name }}"
+                    maxlength="100"
+                    required
+                >
+
+            </div>
+
+            <!-- Phone -->
+            <div class="mb-3">
+
+                <label class="form-label">Phone Number</label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    class="form-control"
+                    value="{{ current_user.phone }}"
+                    maxlength="15"
+                    required
+                >
+
+            </div>
+
+            <!-- Service Type -->
+            <div class="mb-3">
+
+                <label class="form-label">Select Service</label>
+
+                <select name="service_type"
+                        class="form-select"
+                        required>
+
+                    <option value="">Choose a service</option>
+
+                    <option value="Motor Rewinding">
+                        Motor Rewinding
+                    </option>
+
+                    <option value="Motor Repair">
+                        Motor Repair
+                    </option>
+
+                    <option value="Pump Repair">
+                        Pump Repair
+                    </option>
+
+                    <option value="Maintenance">
+                        Maintenance
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Motor Type -->
+            <div class="mb-3">
+
+                <label class="form-label">Motor Type</label>
+
+                <select name="motor_type"
+                        class="form-select"
+                        required>
+
+                    <option value="">Select motor type</option>
+
+                    <option value="Single Phase">
+                        Single Phase
+                    </option>
+
+                    <option value="Three Phase">
+                        Three Phase
+                    </option>
+
+                    <option value="Submersible Pump">
+                        Submersible Pump
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Problem Description -->
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Describe Your Problem
+                </label>
+
+                <textarea
+                    name="problem_description"
+                    class="form-control"
+                    rows="4"
+                    placeholder="Explain the motor or pump problem..."
+                    required
+                ></textarea>
+
+            </div>
+
+            <!-- Preferred Date -->
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Preferred Service Date
+                </label>
+
+                <input
+                    type="date"
+                    name="preferred_date"
+                    class="form-control"
+                    min="{{ today }}"
+                    required
+                >
+
+            </div>
+
+            <!-- Address -->
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Your Address
+                </label>
+
+                <textarea
+                    name="address"
+                    class="form-control"
+                    rows="3"
+                    placeholder="Enter your complete address..."
+                    required
+                ></textarea>
+
+            </div>
+
+            <!-- Submit -->
+            <button type="submit"
+                    class="btn btn-primary w-100">
+
+                Submit Booking
+
+            </button>
+
+        </form>
+
+        <div class="text-center mt-4">
+
+            <a href="{{ url_for('dashboard') }}"
+               class="btn btn-outline-secondary">
+
+                Back to Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
