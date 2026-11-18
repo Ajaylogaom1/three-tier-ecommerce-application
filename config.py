@@ -9,7 +9,7 @@ database_url = URL.create(
     drivername="mysql+pymysql",
     username=os.getenv("MYSQL_USER"),
     password=os.getenv("MYSQL_PASSWORD"),
-    host=os.getenv("MYSQL_HOST", "localhost"),
+    host=os.getenv("MYSQL_HOST", "mysql"),
     port=int(os.getenv("MYSQL_PORT", "3306")),
     database=os.getenv("MYSQL_DATABASE", "shree_sai")
 )
